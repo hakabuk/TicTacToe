@@ -1,0 +1,74 @@
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.Status {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px auto;
+}
+
+.Square {
+  background-color: #fff;
+  float: left;
+  font-size: 60px;
+  font-weight: bold;
+  line-height: 120px;
+  height: 120px;
+  margin: 3px;
+  padding: 0;
+  text-align: center;
+  width: 120px;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px #ccc;
+  transition: background-color 0.3s ease;
+}
+
+.Square:hover {
+  background-color: #F0F0F0;
+}
+
+.Square:focus {
+  outline: none;
+}
+
+.kbd-navigation .Square:focus {
+  background: grey;
+}
+
+.App {
+  display: flex;
+  margin: 0 auto;
+}
+
+.Game {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Game h1 {
+  font-size: 30px;
+}
+
+.GameInfo ul {
+  list-style-type: none;
+}
+
+.Move button {
+  box-shadow: 2px 2px 2px #ccc;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 5px;
+  height: 2.2em;
+  transition: background-color 0.3s ease;
+}
+
+.Move button:hover {
+  background-color: #F0F0F0;
+  border: none;
+}
+.Move button:focus {
+  outline: none;
+}
