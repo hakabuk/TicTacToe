@@ -1,7 +1,8 @@
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
+.GameGrid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 500px;
 }
 
 .Status {
@@ -10,9 +11,11 @@
   margin: 20px auto;
 }
 
+
 .Square {
+  flex: 1 0 30%; 
+  display: inline-block;
   background-color: #fff;
-  float: left;
   font-size: 60px;
   font-weight: bold;
   line-height: 120px;
