@@ -75,3 +75,7 @@
 .Move button:focus {
   outline: none;
 }
+
+.WinnerSquare {
+  color: red;
+}
