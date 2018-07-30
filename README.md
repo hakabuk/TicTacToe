@@ -13,4 +13,4 @@ Next suggested steps according to Reactjs documentation:
 
 Current look:
 
-![https://zurda.github.io/TicTacToe/](https://zurda.github.io/TicTacToe/)
+[https://zurda.github.io/TicTacToe/](https://zurda.github.io/TicTacToe/)
