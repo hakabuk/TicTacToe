@@ -2,7 +2,7 @@
   "name": "tic-tac-toe",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://zurda.github.io/TicTacToe/",
+  "homepage": "https://zurda.github.io/React-TicTacToe/",
   "dependencies": {
     "gh-pages": "^1.2.0",
     "react": "^16.4.1",
