@@ -83,14 +83,18 @@ class App extends React.Component {
         'Go to move #' + move :
         'Go to game start';
       return (
-        <li className='Move' key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+        <li className='Move' key={move} >
+          <button 
+            id={this.state.stepNumber === move ? 'LatestMove' : null}
+            onClick={() => this.jumpTo(move)}
+          >
+            {desc}
+          </button>
         </li>
       );
     });
     let status;
     if (winner) {
-      console.log(winner);
       status = "Winner: " + (!this.state.xIsNext ? "X" : "O");
       for (let i=0; i<3; i++) {
         let element = document.getElementById('square' + winner[i]);

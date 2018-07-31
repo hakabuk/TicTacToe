@@ -79,3 +79,8 @@
 .WinnerSquare {
   color: red;
 }
+
+#LatestMove {
+  font-weight: bold;
+  color: green;
+}
