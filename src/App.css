@@ -66,6 +66,9 @@
   margin-bottom: 5px;
   height: 2.2em;
   transition: background-color 0.3s ease;
+  display: inline;
+  width: 80%;
+  text-decoration: none;
 }
 
 .Move button:hover {
