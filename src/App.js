@@ -1,34 +1,9 @@
 import React from 'react';
 import './App.css';
-
-function Square(props) {
-  return (
-    <button className="Square" id={'square'+props.id} onClick={props.onClick}>
-      {props.value}
-    </button>
-  );
-}
-
-class Board extends React.Component {
-  renderSquare(i) {
-    return (
-      <Square key={i} id={i}
-        value={this.props.squares[i]}
-        onClick={() => this.props.onClick(i)}
-      />
-    );
-  }
-
-  render() {
-    let arr = [];
-    for (let i=0; i<this.props.squares.length; i++) {
-      arr.push(this.renderSquare(i));
-    }
-    return (
-      <div className='GameGrid'>{arr}</div>
-    );
-  }
-}
+import Board from './containers/Board';
+import Status from './components/Status';
+import GameInfo from './components/GameInfo';
+import calculateWinner from './components/calculateWinner';
 
 class App extends React.Component {
   constructor(props) {
@@ -110,63 +85,30 @@ class App extends React.Component {
         </li>
       );
     });
-    let status;
-    if (winner) {
-      status = "Winner: " + (!this.state.xIsNext ? "X" : "O");
-      for (let i=0; i<3; i++) {
-        let element = document.getElementById('square' + winner[i]);
-        element.classList.add("WinnerSquare");        
-      }
-    } else if (this.state.stepNumber === 0) {
-      status = "Click anywhere to start";
-    } else {
-      status = "Next player: " + (this.state.xIsNext ? "X" : "O");
-    }
 
     return (
       <div className="App">
         <div className="Game">
         <h1>Tic Tac Toe</h1>
-          <div className='Status'>{status}</div>
+          <Status isWinner={winner} 
+                  stepNumber ={this.state.stepNumber} 
+                  xIsNext={this.state.xIsNext}
+          />
           <div className="game-board">
             <Board
               squares={current.squares}
               onClick={i => this.handleClick(i)}
             />
           </div>
-          <div className="GameInfo">
-            <h3>Game History:</h3>
-            <button className='MovesOrder' onClick={() => this.toggleMoveOrderHandler()}>{this.state.isAscending ? 'Ascending' : 'Descending'}</button>
-            <ul className={this.state.isAscending ? 'Ascending' : 'Descending'} >{moves}</ul>
-          </div>
+          <GameInfo 
+            moves={moves}
+            isAscending={this.state.isAscending} 
+            clicked={()=>this.toggleMoveOrderHandler()}
+          />
         </div>
       </div>
     );
   }
-}
-
-function calculateWinner(squares) {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-  ];
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      const elems = document.getElementsByClassName("Square");
-      for(let i = 0; i < elems.length; i++) {
-        elems[i].disabled = true;
-      }
-      return lines[i];
-    }
-  }
-  return null;
 }
 
 export default App;
