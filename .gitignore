@@ -12,7 +12,7 @@ Release*/
 *.pyc
 .svn/
 .gitignore
-node_modules
+node_modules/
 
 ###################################
 # IDE specific
