@@ -74,10 +74,11 @@ class App extends React.Component {
       stepNumber: step,
       xIsNext: (step % 2) === 0
     });
-    for (let i=0; i<9; i++) {
-      let element = document.getElementById('square' + i);
-      element.classList.remove("WinnerSquare");   
-      }    
+    const elems = document.getElementsByClassName('Square');
+      for(let i = 0; i < elems.length; i++) {
+        elems[i].classList.remove('WinnerSquare');
+        elems[i].disabled = false;
+      } 
   }
 
   toggleMoveOrderHandler = () => {
@@ -94,7 +95,9 @@ class App extends React.Component {
     const locations = current.locations.slice();
     const moves = history.map((step, move) => {
       const desc = move ?
-        'Go to move #' + move + ((move % 2) === 0 ? ': O' : ': X') + ' to square ' + (move<locations.length+1 ? locations[move-1]: '?'):
+        'Go to move #' + move + 
+          ((move % 2) === 0 ? ': O' : ': X') + ' to square ' + 
+            (move<locations.length+1 ? locations[move-1]: '?'):
         'Go to game start';
       return (
         <li className='Move' key={move} >
@@ -156,6 +159,10 @@ function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+      const elems = document.getElementsByClassName("Square");
+      for(let i = 0; i < elems.length; i++) {
+        elems[i].disabled = true;
+      }
       return lines[i];
     }
   }
