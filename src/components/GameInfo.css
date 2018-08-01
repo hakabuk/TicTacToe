@@ -1,0 +1,39 @@
+.MovesOrder {
+  box-shadow: 2px 2px 2px #ccc;
+  background-color: green;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 5px;
+  height: 2.2em;
+  transition: background-color 0.3s ease;
+  text-decoration: none;  
+}
+
+.Descending {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-direction: column; 
+  flex-direction: column; 
+  float: center;
+}
+
+.Ascending {
+  -ms-box-orient: horizontal;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-direction: column-reverse; 
+  flex-direction: column-reverse; 
+  float: center;
+}
