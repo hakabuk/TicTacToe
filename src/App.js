@@ -4,7 +4,6 @@ import Board from './containers/Board';
 import Status from './components/Status';
 import GameInfo from './components/GameInfo';
 import calculateWinner from './components/calculateWinner';
-import Modal from './components/Modal';
 
 class App extends React.Component {
   constructor(props) {
@@ -89,9 +88,7 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <Modal show={true} modalClosed={console.log('Closed')}>
-          {"You ordered nothing"}
-        </Modal>        <div className="Game">
+        <div className="Game">
         <h1>Tic Tac Toe</h1>
           <Status isWinner={winner} 
                   stepNumber ={this.state.stepNumber} 
