@@ -41,7 +41,8 @@ class App extends React.Component {
         }
       ],
       stepNumber: 0,
-      xIsNext: true
+      xIsNext: true,
+      isAscending: true
       };
   }
 
@@ -64,7 +65,7 @@ class App extends React.Component {
         }
       ]),
       stepNumber: history.length,
-      xIsNext: !this.state.xIsNext
+      xIsNext: !this.state.xIsNext,
     });
   }
 
@@ -77,6 +78,13 @@ class App extends React.Component {
       let element = document.getElementById('square' + i);
       element.classList.remove("WinnerSquare");   
       }    
+  }
+
+  toggleMoveOrderHandler = () => {
+    const current = this.state.isAscending;
+    this.setState({
+      isAscending: !current
+    });
   }
 
   render() {
@@ -125,7 +133,8 @@ class App extends React.Component {
           </div>
           <div className="GameInfo">
             <h3>Game History:</h3>
-            <ul>{moves}</ul>
+            <button className='MovesOrder' onClick={() => this.toggleMoveOrderHandler()}>{this.state.isAscending ? 'Ascending' : 'Descending'}</button>
+            <ul className={this.state.isAscending ? 'Ascending' : 'Descending'} >{moves}</ul>
           </div>
         </div>
       </div>
