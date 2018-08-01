@@ -37,6 +37,10 @@
   outline: none;
 }
 
+.Square:disabled {
+  pointer-events: none;
+}
+
 .kbd-navigation .Square:focus {
   background: grey;
 }
