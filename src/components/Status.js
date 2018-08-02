@@ -9,6 +9,8 @@ const Status = (props) => {
         let element = document.getElementById('square' + props.isWinner[i]);
         element.classList.add("WinnerSquare");        
       }
+    } else if (props.stepNumber === 9) {
+	    status = "Cat's Game"
     } else if (props.stepNumber === 0) {
       status = "Click anywhere to start";
     } else {
