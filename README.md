@@ -11,3 +11,14 @@ Next suggested steps according to Reactjs documentation:
 Current look:
 
 [https://zurda.github.io/React-TicTacToe/](https://zurda.github.io/React-TicTacToe/)
+
+To run the project locally: 
+
+1. Fork and clone the repo
+2. `$ npm install`
+3. `$ npm start` 
+
+### Contributing
+
+- This project absolutely accepts Pull Requests. 
+- If you have suggestions for features or improvements - feel free to open an issue. 
