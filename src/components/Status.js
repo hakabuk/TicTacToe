@@ -10,8 +10,11 @@ const Status = (props) => {
         element.classList.add("WinnerSquare");        
       }
     } else if (props.stepNumber === 9) {
-      status = "Cat's Game"
-      document.getElementsByClassName("Square").disabled = true;
+        status = "Cat's Game";
+        const elems = document.getElementsByClassName("Square");
+          for(let i = 0; i < elems.length; i++) {
+            elems[i].disabled = true;
+        }
     } else if (props.stepNumber === 0) {
       status = "Click anywhere to start";
     } else {
