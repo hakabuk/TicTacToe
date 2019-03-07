@@ -15,7 +15,7 @@ const Title = styled.h1`
   font-weight: bold;
 `;
 
-const ResetButton = styled.button`
+const Button = styled.button`
   box-shadow: 2px 2px 2px #ccc;
   background-color: #6a874d;
   color: white;
@@ -37,7 +37,7 @@ class App extends React.Component {
     ],
     stepNumber: 0,
     xIsNext: true,
-    isAscending: true
+    isAscending: true,
   };
 
   handleClick(i) {
@@ -63,8 +63,6 @@ class App extends React.Component {
     });
   }
 
-
-
   jumpTo = (step) => {
     this.setState({
       stepNumber: step,
@@ -86,6 +84,7 @@ class App extends React.Component {
 
   resetGame = () => {
     this.setState({
+      ...this.state,
       history: [
         {
           squares: Array(9).fill(null),
@@ -94,8 +93,11 @@ class App extends React.Component {
       ],
       stepNumber: 0,
       xIsNext: true,
-      isAscending: true
     });
+  }
+
+  newGame = () => {
+    this.resetGame();
   }
 
   render() {
@@ -125,11 +127,12 @@ class App extends React.Component {
       <div className="App">
         <div className="Game">
           <Title>Tic Tac Toe</Title>
-          <Status isWinner={winner}
+          <Status
+            isWinner={winner}
             stepNumber={this.state.stepNumber}
             xIsNext={this.state.xIsNext}
           />
-          <ResetButton onClick={this.resetGame}>Reset Game</ResetButton>
+          <Button onClick={this.resetGame}>Reset Game</Button>
           <div className="game-board">
             <Board
               squares={current.squares}
@@ -142,7 +145,7 @@ class App extends React.Component {
             clicked={() => this.toggleMoveOrderHandler()}
           />
         </div>
-      </div>
+      </div >
     );
   }
 }
