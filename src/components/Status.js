@@ -32,7 +32,9 @@ const Status = (props) => {
   } else {
     status = "Next player: " + (props.xIsNext ? "X" : "O");
   }
-  return <MedTitle className='Status'>{status}</MedTitle>;
+  return <div>
+    <MedTitle className='Status'>{status}</MedTitle>
+  </div>;
 }
 
 export default Status;

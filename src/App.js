@@ -15,7 +15,7 @@ const Title = styled.h1`
   font-weight: bold;
 `;
 
-const ResetButton = styled.button`
+const Button = styled.button`
   box-shadow: 2px 2px 2px #ccc;
   background-color: #6a874d;
   color: white;
@@ -29,7 +29,6 @@ const ResetButton = styled.button`
 
 class App extends React.Component {
   state = {
-    newGame: true,
     history: [
       {
         squares: Array(9).fill(null),
@@ -48,7 +47,6 @@ class App extends React.Component {
     const locations = current.locations.slice();
 
     if (calculateWinner(squares) || squares[i]) {
-      this.setState({ winner: true })
       return;
     }
     squares[i] = this.state.xIsNext ? "X" : "O";
@@ -98,6 +96,10 @@ class App extends React.Component {
     });
   }
 
+  newGame = () => {
+    this.resetGame();
+  }
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
@@ -125,11 +127,12 @@ class App extends React.Component {
       <div className="App">
         <div className="Game">
           <Title>Tic Tac Toe</Title>
-          <Status isWinner={winner}
+          <Status
+            isWinner={winner}
             stepNumber={this.state.stepNumber}
             xIsNext={this.state.xIsNext}
           />
-          <ResetButton onClick={this.resetGame}>Reset Game</ResetButton>
+          <Button onClick={this.resetGame}>Reset Game</Button>
           <div className="game-board">
             <Board
               squares={current.squares}
@@ -142,7 +145,7 @@ class App extends React.Component {
             clicked={() => this.toggleMoveOrderHandler()}
           />
         </div>
-      </div>
+      </div >
     );
   }
 }
