@@ -8,10 +8,6 @@
   text-align: center;
 }
 
-.Game h1 {
-  font-size: 30px;
-}
-
 .GameInfo ul {
   list-style-type: none;
 }
@@ -36,10 +32,10 @@
 }
 
 .WinnerSquare {
-  color: red;
+  color: #60abd6;
 }
 
 #LatestMove {
   font-weight: bold;
-  color: green;
+  color: #6a874d;
 }

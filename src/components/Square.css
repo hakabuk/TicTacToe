@@ -2,14 +2,14 @@
   flex: 1 0 30%; 
   display: inline-block;
   background-color: #fff;
-  font-size: 60px;
+  font-size: 4rem;
   font-weight: bold;
-  line-height: 120px;
-  height: 120px;
+  height: 10rem;
   margin: 3px;
   padding: 0;
+  box-sizing: border-box;
   text-align: center;
-  width: 120px;
+  width: 10rem;
   cursor: pointer;
   box-shadow: 2px 2px 2px #ccc;
   transition: background-color 0.3s ease;
