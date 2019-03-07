@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import './App.css';
+
 import Board from './containers/Board';
 import Status from './components/Status';
 import GameInfo from './components/GameInfo';
@@ -13,22 +15,30 @@ const Title = styled.h1`
   font-weight: bold;
 `;
 
+const ResetButton = styled.button`
+  box-shadow: 2px 2px 2px #ccc;
+  background-color: #6a874d;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  margin-bottom: 5px;
+  height: 2.2em;
+  text-decoration: none;  
+`;
+
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      history: [
-        {
-          squares: Array(9).fill(null),
-          locations: Array(0).fill(null)
-        }
-      ],
-      stepNumber: 0,
-      xIsNext: true,
-      isAscending: true
-    };
-  }
+  state = {
+    history: [
+      {
+        squares: Array(9).fill(null),
+        locations: Array(0).fill(null)
+      }
+    ],
+    stepNumber: 0,
+    xIsNext: true,
+    isAscending: true
+  };
 
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);
@@ -53,7 +63,9 @@ class App extends React.Component {
     });
   }
 
-  jumpTo(step) {
+
+
+  jumpTo = (step) => {
     this.setState({
       stepNumber: step,
       xIsNext: (step % 2) === 0
@@ -69,6 +81,20 @@ class App extends React.Component {
     const current = this.state.isAscending;
     this.setState({
       isAscending: !current
+    });
+  }
+
+  resetGame = () => {
+    this.setState({
+      history: [
+        {
+          squares: Array(9).fill(null),
+          locations: Array(0).fill(null)
+        }
+      ],
+      stepNumber: 0,
+      xIsNext: true,
+      isAscending: true
     });
   }
 
@@ -103,6 +129,7 @@ class App extends React.Component {
             stepNumber={this.state.stepNumber}
             xIsNext={this.state.xIsNext}
           />
+          <ResetButton onClick={this.resetGame}>Reset Game</ResetButton>
           <div className="game-board">
             <Board
               squares={current.squares}
