@@ -23,6 +23,11 @@ const Status = (props) => {
       elems[i].disabled = true;
     }
   } else if (props.stepNumber === 0) {
+    const elems = document.getElementsByClassName("Square");
+    for (let i = 0; i < elems.length; i++) {
+      elems[i].disabled = false;
+      elems[i].classList.remove("WinnerSquare");
+    }
     status = "Click anywhere to start";
   } else {
     status = "Next player: " + (props.xIsNext ? "X" : "O");

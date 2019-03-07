@@ -29,6 +29,7 @@ const ResetButton = styled.button`
 
 class App extends React.Component {
   state = {
+    newGame: true,
     history: [
       {
         squares: Array(9).fill(null),
@@ -37,7 +38,7 @@ class App extends React.Component {
     ],
     stepNumber: 0,
     xIsNext: true,
-    isAscending: true
+    isAscending: true,
   };
 
   handleClick(i) {
@@ -47,6 +48,7 @@ class App extends React.Component {
     const locations = current.locations.slice();
 
     if (calculateWinner(squares) || squares[i]) {
+      this.setState({ winner: true })
       return;
     }
     squares[i] = this.state.xIsNext ? "X" : "O";
@@ -62,8 +64,6 @@ class App extends React.Component {
       xIsNext: !this.state.xIsNext,
     });
   }
-
-
 
   jumpTo = (step) => {
     this.setState({
@@ -86,6 +86,7 @@ class App extends React.Component {
 
   resetGame = () => {
     this.setState({
+      ...this.state,
       history: [
         {
           squares: Array(9).fill(null),
@@ -94,7 +95,6 @@ class App extends React.Component {
       ],
       stepNumber: 0,
       xIsNext: true,
-      isAscending: true
     });
   }
 
